@@ -1,0 +1,35 @@
+<div class="container"
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      <div class="error_explanation">
+        <% if @book.errors.any? %>
+          <% if (@book.errors.count) == 1 %>
+            <h3>1 error prohibited this obj from being saved:</h3>
+          <% else %>
+            <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+          <% end %>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+        <%= form_with model: @book, local: true do |f| %>
+        <div class="field mb-3">
+          <%= f.label :Title %><br />
+          <%= f.text_field :title, autofocus: true ,class:"form-control"%>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :Opinion %><br/>
+          <%= f.text_area :opinion,class:"form-control" %>
+        </div>
+        <div class="actions mb-3">
+          <%= f.submit "Update Book" ,class:"btn btn-sm btn-success" %>
+        </div>
+        <% end %>
+        <%= link_to "Show" ,book_path(@book.id) %> | <%= link_to "Back" ,books_path %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+  <!--左側-->
+    <div class="col-md-3">
+      <%= render "lists/user_profile", user: @user %>
+       <!--編集ボタン-->
+        <div class="row">
+          <% if @book.user == current_user %>
+            <a><%= link_to "" ,edit_user_path(current_user.id) ,class:"bi bi-gear-fill btn btn-outline-secondary btn-block" %></a>
+          <% else %>
+            <a><%= link_to "" ,user_path(current_user.id) ,class:"bi bi-gear-fill btn btn-outline-secondary btn-block" %></a>
+          <% end %>
+        </div>
+      <%= render "lists/new_book", book: @book %>
+    </div>
+  <!--右側-->
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table table-hover table-inverse">
+        <% if @books.user == current_user %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(@books.user.id) do %>
+                <%= attachment_image_tag @books.user, :image, :fill, 40, 40, fallback:"/assets/no_image.jpg"%><br>
+                <%= @books.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to book_path(@books.id) do %>
+                <%= @books.title %>
+                <% end %>
+              </td>
+              <td><%= @books.opinion %></td>
+              <td><%= link_to "Edit" , edit_book_path, class:"btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy" , book_path, method: :delete, class:"btn btn-sm btn-danger" ,"data-confirm" => "本当に削除しますか？" %></td>
+            </tr>
+          </tbody>
+        <% else %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(@books.user.id) do %>
+                <%= attachment_image_tag @books.user, :image, :fill, 40, 40, fallback:"/assets/no_image.jpg"%><br>
+                <%= @books.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to book_path(@books.id) do %>
+                <%= @books.title %>
+                <% end %>
+              </td>
+              <td><%= @books.opinion %></td>
+            </td>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
