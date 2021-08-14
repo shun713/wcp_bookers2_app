@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   
   def index
+    @user = current_user
     @users = User.all
+    @book = Book.new
   end
   
   def show
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:name,:introduction, :image)
+    params.require(:user).permit(:name,:introduction, :profile_image)
   end
   
 end

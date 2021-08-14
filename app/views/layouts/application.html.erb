@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f186607888.js" crossorigin="anonymous"></script>
     <title>Bookers2</title>
   </head>
 
@@ -23,15 +24,15 @@
           <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto font-weight-bold">
               <% if user_signed_in? %>
-                <li><%= link_to " Home",user_path(current_user.id) ,class:"bi bi-house-door-fill nav-link text-white" %></li>
-                <li><%= link_to " Users",users_path ,class:"bi bi-people nav-link text-white" %></li>
-                <li><%= link_to " Books",books_path ,class:"bi bi-book-fill nav-link text-white" %></li>
-                <li><%= link_to " logout",destroy_user_session_path, method: :delete ,class:"bi bi-box-arrow-right nav-link text-white" %></li>
+                <li><%= link_to " Home",user_path(current_user.id) ,class:"fas fa-home nav-link text-white" %></li>
+                <li><%= link_to " Users",users_path ,class:"fas fa-users nav-link text-white" %></li>
+                <li><%= link_to " Books",books_path ,class:"fas fa-book-open nav-link text-white" %></li>
+                <li><%= link_to " logout",destroy_user_session_path, method: :delete ,class:"fas fa-sign-out-alt nav-link text-white" %></li>
               <% else %>
-                <li><%= link_to " Home",top_path ,class:"bi bi-house-door-fill nav-link text-white" %></li>
-                <li><%= link_to " About",about_path ,class:"bi bi-link-45deg nav-link  text-white" %></li>
-                <li><%= link_to " sign up",new_user_registration_path ,class:"bi bi-person-plus-fill nav-link text-white" %></li>
-                <li><%= link_to " login",new_user_session_path ,class:"bi bi-box-arrow-in-right nav-link text-white" %></li>
+                <li><%= link_to " Home",root_path ,class:"fas fa-home nav-link text-white" %></li>
+                <li><%= link_to " About",about_path ,class:"fas fa-link nav-link  text-white" %></li>
+                <li><%= link_to " sign up",new_user_registration_path ,class:"fas fa-user-plus nav-link text-white" %></li>
+                <li><%= link_to " login",new_user_session_path ,class:"fas fa-sign-in-alt nav-link text-white" %></li>
               <% end %>
             </ul>
           </div>
